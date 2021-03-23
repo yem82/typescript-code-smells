@@ -80,11 +80,13 @@ class Board
 
     constructor()
     {
-        for (let i = 0; i < 3; i++)
-        {
-            for (let j = 0; j < 3; j++)
-            {
-                const tile : Tile = {X :i, Y:j, Symbol:" "};
+        this.instantiateTiles();
+    }
+
+    private instantiateTiles() {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                const tile: Tile = {X: i, Y: j, Symbol: " "};
                 this._plays.push(tile);
             }
         }
