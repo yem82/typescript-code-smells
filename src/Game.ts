@@ -1,10 +1,10 @@
-import Board from './Board';
+import Board, {Coordinate, SymbolType} from './Board';
 
 export class Game {
     private _lastSymbol: string = ' ';
     private _board: Board = new Board();
 
-    public Play(symbol: string, x: number, y: number): void {
+    public Play(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
         //if first move
         if (this._lastSymbol == ' ') {
             //if player is X

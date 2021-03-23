@@ -1,5 +1,5 @@
-type Coordinate = 0 | 1 | 2;
-type SymbolType = " " | "X" | "O";
+export type Coordinate = 0 | 1 | 2;
+export type SymbolType = " " | "X" | "O";
 interface Tile {
     X: Coordinate;
     Y: Coordinate;
@@ -27,6 +27,6 @@ export default class Board {
     }
 
     public AddTileAt(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
-        this._plays.find((t: Tile) => t.X == x && t.Y == y)!.Symbol = symbol;
+        this.TileAt(x, y).Symbol = symbol;
     }
 }
