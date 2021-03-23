@@ -1,7 +1,9 @@
+type Coordinate = 0 | 1 | 2;
+type SymbolType = " " | "X" | "O";
 interface Tile {
-    X: number;
-    Y: number;
-    Symbol: string;
+    X: Coordinate;
+    Y: Coordinate;
+    Symbol: SymbolType;
 }
 
 export default class Board {
@@ -14,17 +16,17 @@ export default class Board {
     private instantiateTiles() {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                const tile: Tile = {X: i, Y: j, Symbol: ' '};
+                const tile: Tile = {X: i as Coordinate, Y: j as Coordinate, Symbol: ' '};
                 this._plays.push(tile);
             }
         }
     }
 
-    public TileAt(x: number, y: number): Tile {
+    public TileAt(x: Coordinate, y: Coordinate): Tile {
         return this._plays.find((t: Tile) => t.X == x && t.Y == y)!
     }
 
-    public AddTileAt(symbol: string, x: number, y: number): void {
+    public AddTileAt(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
         this._plays.find((t: Tile) => t.X == x && t.Y == y)!.Symbol = symbol;
     }
 }
