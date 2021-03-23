@@ -23,7 +23,7 @@ export default class Board {
     }
 
     public TileAt(x: Coordinate, y: Coordinate): Tile {
-        return this._plays.find((t: Tile) => t.X == x && t.Y == y)!
+        return this._plays.find((tile: Tile) => tile.X === x && tile.Y === y)!
     }
 
     public AddTileAt(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
