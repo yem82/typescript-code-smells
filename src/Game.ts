@@ -4,23 +4,24 @@ export class Game {
     private _lastSymbol: SymbolType = ' ';
     private _board: Board = new Board();
 
-    public Play(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
-        //if first move
-        if (this._lastSymbol === ' ') {
-            //if player is X
-            if (symbol === 'O') {
-                throw new Error('Invalid first player');
-            }
+    private validatesMove = (symbol: SymbolType, x: Coordinate, y: Coordinate) => {
+       //if first move
+       if (this._lastSymbol === ' ' && symbol === 'O') {
+            throw new Error('Invalid first player');
         }
         //if not first move but player repeated
-        else if (symbol === this._lastSymbol) {
+        else if (this._lastSymbol === symbol) {
             throw new Error('Invalid next player');
         }
         //if not first move but play on an already played tile
         else if (this._board.TileAt(x, y).Symbol !== ' ') {
             throw new Error('Invalid position');
         }
+    }
 
+    public Play(symbol: SymbolType, x: Coordinate, y: Coordinate): void {
+
+        this.validatesMove(symbol, x, y);
         // update game state
         this._lastSymbol = symbol;
         this._board.AddTileAt(symbol, x, y);
